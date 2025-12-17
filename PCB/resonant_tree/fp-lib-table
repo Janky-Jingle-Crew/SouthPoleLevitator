@@ -1,0 +1,5 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "floating_tree_library")(type "KiCad")(uri "${KIPRJMOD}/floating_tree_library.pretty")(options "")(descr ""))
+  (lib (name "resonant_tree_library")(type "KiCad")(uri "${KIPRJMOD}/resonant_tree_library.pretty")(options "")(descr ""))
+)
