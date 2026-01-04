@@ -1,0 +1,33 @@
+G04 #@! TF.GenerationSoftware,KiCad,Pcbnew,9.0.0*
+G04 #@! TF.CreationDate,2026-01-04T18:33:11+01:00*
+G04 #@! TF.ProjectId,maglev_coils,6d61676c-6576-45f6-936f-696c732e6b69,rev?*
+G04 #@! TF.SameCoordinates,Original*
+G04 #@! TF.FileFunction,Soldermask,Top*
+G04 #@! TF.FilePolarity,Negative*
+%FSLAX46Y46*%
+G04 Gerber Fmt 4.6, Leading zero omitted, Abs format (unit mm)*
+G04 Created by KiCad (PCBNEW 9.0.0) date 2026-01-04 18:33:11*
+%MOMM*%
+%LPD*%
+G01*
+G04 APERTURE LIST*
+%ADD10C,5.200000*%
+G04 APERTURE END LIST*
+D10*
+G04 #@! TO.C,L3*
+X147747541Y-100304792D03*
+X168247541Y-100304792D03*
+G04 #@! TD*
+G04 #@! TO.C,L2*
+X140395721Y-92801272D03*
+X140395721Y-72301272D03*
+G04 #@! TD*
+G04 #@! TO.C,L4*
+X140244021Y-107656611D03*
+X140244021Y-128156611D03*
+G04 #@! TD*
+G04 #@! TO.C,L1*
+X132892201Y-100153091D03*
+X112392201Y-100153091D03*
+G04 #@! TD*
+M02*

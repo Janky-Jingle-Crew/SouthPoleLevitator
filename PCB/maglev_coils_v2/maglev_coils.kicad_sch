@@ -1,0 +1,558 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "16c669e1-36e9-455e-9cc9-8417748e14e5")
+	(paper "A4")
+	(lib_symbols
+		(symbol "custom_sym:Coil"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "L"
+				(at 1.016 1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Coil"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Coil_0_1"
+				(polyline
+					(pts
+						(xy -1.27 1.27) (xy -2.54 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -2.54) (xy 1.27 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Coil_1_1"
+				(arc
+					(start -1.27 1.27)
+					(mid -0.6462 1.2588)
+					(end -0.635 0.635)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -0.635 0.635)
+					(mid -0.0062 0.6288)
+					(end 0 0)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 0)
+					(mid 0.6256 -0.0094)
+					(end 0.635 -0.635)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0.635 -0.635)
+					(mid 1.2552 -0.6449)
+					(end 1.27 -1.27)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -2.54 2.54 0)
+					(length 0)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 -2.54 180)
+					(length 0)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(no_connect
+		(at 66.04 52.07)
+		(uuid "1f0a6e51-cf26-4e27-97ef-af726db103c8")
+	)
+	(no_connect
+		(at 59.69 29.21)
+		(uuid "37eb5bff-b8ee-4bc2-9768-5960e32b1c57")
+	)
+	(no_connect
+		(at 59.69 58.42)
+		(uuid "60aa6505-fa03-4bd6-8610-86abe6c6ad2e")
+	)
+	(no_connect
+		(at 43.18 29.21)
+		(uuid "b76874cf-2975-40c0-a304-4bf4fcebdf11")
+	)
+	(no_connect
+		(at 36.83 35.56)
+		(uuid "b942dc7c-1c0a-4d48-b250-ba4fb5851857")
+	)
+	(no_connect
+		(at 66.04 35.56)
+		(uuid "c58abfc6-3b92-4512-898b-e1a72eba7ab8")
+	)
+	(no_connect
+		(at 43.18 58.42)
+		(uuid "c685bcf9-271c-4d51-b939-c2dc0481bd12")
+	)
+	(no_connect
+		(at 36.83 52.07)
+		(uuid "c7f6b482-0efc-4b4d-9967-90de2f5b1635")
+	)
+	(wire
+		(pts
+			(xy 66.04 35.56) (xy 66.04 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "22e3c9c9-298d-4450-a4c6-c85b0f46515f")
+	)
+	(wire
+		(pts
+			(xy 36.83 52.07) (xy 36.83 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2f250001-ac20-4369-b446-6a126f666d55")
+	)
+	(wire
+		(pts
+			(xy 59.69 58.42) (xy 60.96 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5bad3b5a-4512-4d00-b4b1-3fd3f65a3355")
+	)
+	(wire
+		(pts
+			(xy 43.18 29.21) (xy 41.91 29.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5fb787b4-2c78-41df-99b7-b5575d9932b2")
+	)
+	(wire
+		(pts
+			(xy 43.18 58.42) (xy 41.91 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "739eb39f-fe8a-4d47-9fd6-badc6691353e")
+	)
+	(wire
+		(pts
+			(xy 36.83 35.56) (xy 36.83 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7636aba6-2cea-45ae-843d-1cea8fa0cd61")
+	)
+	(wire
+		(pts
+			(xy 59.69 29.21) (xy 60.96 29.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c90b85d3-3f45-4bea-ab7c-bc349af4916c")
+	)
+	(wire
+		(pts
+			(xy 66.04 52.07) (xy 66.04 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c927664b-af49-49d4-9014-2548494c8545")
+	)
+	(symbol
+		(lib_id "custom_sym:Coil")
+		(at 63.5 55.88 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0bdb9979-20d9-4f1d-b911-722010cc44dc")
+		(property "Reference" "L3"
+			(at 66.802 56.388 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Coil"
+			(at 66.802 58.928 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "pcb_coils:4L_116turns_33dia_0.245w"
+			(at 63.5 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 63.5 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 63.5 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "0cc40100-e0f2-4279-9308-c9e77342469f")
+		)
+		(pin "1"
+			(uuid "3256e225-8eaf-4f36-b937-9d72e9b764d5")
+		)
+		(instances
+			(project "maglev_coils"
+				(path "/16c669e1-36e9-455e-9cc9-8417748e14e5"
+					(reference "L3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "custom_sym:Coil")
+		(at 39.37 55.88 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c149568e-67bc-4de3-b3a2-bef73996b06b")
+		(property "Reference" "L1"
+			(at 34.29 56.388 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "Coil"
+			(at 33.782 58.928 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "pcb_coils:4L_116turns_33dia_0.245w"
+			(at 39.37 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 39.37 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 39.37 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "76a738cf-8afd-4b81-841d-d4d83a9f6e9e")
+		)
+		(pin "1"
+			(uuid "d8737d55-d4d1-48d5-a08e-df077462907f")
+		)
+		(instances
+			(project "maglev_coils"
+				(path "/16c669e1-36e9-455e-9cc9-8417748e14e5"
+					(reference "L1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "custom_sym:Coil")
+		(at 63.5 31.75 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "cd974f93-74bc-48bf-a41d-f32e52e97038")
+		(property "Reference" "L4"
+			(at 65.532 28.448 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Coil"
+			(at 65.786 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "pcb_coils:4L_116turns_33dia_0.245w"
+			(at 63.5 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 63.5 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 63.5 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "256a1099-7895-4a38-b469-26aa5737ba93")
+		)
+		(pin "1"
+			(uuid "ccb51ef6-8a38-4aec-82d7-bdbac365f4a2")
+		)
+		(instances
+			(project "maglev_coils"
+				(path "/16c669e1-36e9-455e-9cc9-8417748e14e5"
+					(reference "L4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "custom_sym:Coil")
+		(at 39.37 31.75 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ed645243-dd42-422c-af8d-b30adb8be1ae")
+		(property "Reference" "L2"
+			(at 36.068 28.702 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Coil"
+			(at 36.322 30.988 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "pcb_coils:4L_116turns_33dia_0.245w"
+			(at 39.37 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 39.37 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 39.37 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "afad0e3f-28be-4f2f-ba25-ad8a16fcc4dc")
+		)
+		(pin "1"
+			(uuid "be94b033-a8c0-431b-8978-df6ac5f80262")
+		)
+		(instances
+			(project ""
+				(path "/16c669e1-36e9-455e-9cc9-8417748e14e5"
+					(reference "L2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)
