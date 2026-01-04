@@ -1,0 +1,16 @@
+{
+    "C_Cpp.default.compilerPath": "c:\\ST\\STM32CubeCLT_1.19.0\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc-13.3.1.exe",
+    "files.associations": {
+        "stm32g030xx.h": "c",
+        "segger_rtt.h": "c",
+        "setup.h": "c",
+        "tmag5273.h": "c",
+        "pwm.h": "c",
+        "stdint.h": "c",
+        "control.h": "c",
+        "cmath": "c",
+        "cstdlib": "c",
+        "coils_pwm_lut.h": "c",
+        "stdbool.h": "c"
+    }
+}

@@ -1,0 +1,17 @@
+Install the following and add to PATH (windows):
+Linux users already know what to do.
+
+GNU Arm Embedded Toolchain (arm-none-eabi-gcc.exe, arm-none-eabi-objcopy.exe) 
+Add the bin folder containing these executables to PATH.
+Use GCC11 or higher
+
+Gnu Make for windows, use GnuWin32
+Add the bin folder containing make.exe to PATH.
+
+ST-LINK Utility
+Add folder containing ST-LINK_CLI.exe to PATH.
+
+Run "make flash" in conemu/cmder or similar terminal to build and upload code.
+Otherwise you can flash with your tool of choice (ST-LINK Utility/PyOCD/OpenOCD) with the precompiled binary in /release
+RTT printouts can be read with "make rtt" (requires python and pyOCD) 
+
