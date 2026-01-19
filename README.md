@@ -1,3 +1,8 @@
+---
+lang: en-US
+---
+
+
 # South Pole Levitator
 
 Janky Jingle Crew is back this Christmas as well! We are continuing with the theme of magnetic propulsion from last year, but this time for levitation! 
@@ -14,6 +19,8 @@ The final result is shown below: a fully functional magnetic levitation platform
 % FINAL IRL PICTURE ?
 
 <img src="./Media/assembly_render.png" width="800px"/>
+<!-- <img src="./Media/demo.png" width="600px"/> -->
+<img src="./Media/irl_demo_cropped.png" width="800px"/>
 
 
 ## User Guide
@@ -23,7 +30,7 @@ The card needs to be powered with a 5V power supply over USB-C, capable of at le
 To levitate the tree:
 
 1. Place the tree away from the driver board.
-2. Place the driver board on a flat surface, and plug in the USB-C cable. Note that the board needs to be level when it gets power for the correct calibration. If the tree is too close, this will also affect the calibration. The calibration is complete once you hear a short beep from the coils. The status LED should also start blinking.
+2. Place the driver board on a flat, nonmagnetic surface, and plug in the USB-C cable. Note that the board needs to be level when it gets power for the correct calibration. If the tree is too close, this will also affect the calibration. The calibration is complete once you hear a short beep from the coils. The status LED should also start blinking.
 3. Hold the tree a few centimeters over and lower it slowly, trying to keep it centered and pointed straight up.
 4. The rest is a balance between keeping the tree centered, and holding it with a loose enough grip. The tree needs to have the freedom to find the center itself, while also being prevented from sticking to either of the four base magnets.
 
@@ -37,6 +44,43 @@ Each coil can be driven independently, but we chose to split the coils into two 
 A 3D Hall effect sensor TMAG5273 was used to sense the position of the levitating magnet and drive the coils accordingly.
 
 ### Control
+
+At the core the control algorithm is a PD controller controlling the duty cycle of the coil drivers in order to keep the levitating magnet centered in the X and Y direction. The position is not directly measured, instead the magnetic field strength in the X and Y direction is used as a proxy for position. This is not linear with the actual position, but is approximated as linear close to the center. This is the general idea but there are multiple problems that need to be handled for stable levitation:
+<!-- - Non-linear relation between coil driver duty cycle and generated magnetic field. -->
+<!-- - Non-linear coil driver characteristics. -->
+<!-- - Coupling between coil current and measured magnetic field. -->
+<!-- - Setpoint calibration. -->
+
+<details>
+<!-- #### Non-linear coil driver characteristics. -->
+<summary> Non-linear coil driver characteristics </summary>
+
+We observed a non linear relation between the coil driver duty cycle and the output current which can be seen in the figure below. To correct for this we wanted to measure the coil current as a function of duty cycle. Since coil current is proportional to the generated magnetic field we can measure the strength of the magnetic field for different duty cycles with the hall sensor. From this a quadratic fit was made which is used to linearize the coil driver response in the control algorithm.
+
+<img style="display: block; margin: auto;" src="./Media/forward_fit_mag_vs_drive.png" width="600px"/>
+
+</details>
+
+
+<details>
+<!-- #### Coil coupling compensation -->
+<summary> Coupling between coil current and measured magnetic field </summary>
+
+When driving the coils, the generated magnetic field affects the hall sensor measurements. This is problematic since this is added to the field from the levitating magnet and affects the position measurement. Since the position measurement is used as the input to the controller this creates a feedback loop which can lead to instability and oscillations. To compensate for this an feedforward model of the generated magnetic field from the coil current is subtracted from the hall sensor measurements before they are used in the controller. This model is created by measuring the magnetic field from each coil at different duty cycles while there is no levitating magnet present. A linear fit is then made to get the coupling coefficients for each coil. This is done during the initialization of the system.
+
+</details>
+
+<details>
+<!-- #### Setpoint calibration -->
+<summary> Setpoint calibration </summary>
+
+Due to manufacturing tolerances in the placement of the hall sensor and the base magnets, the center of the base magnetic field, which is the optimal place to levitate the magnet, does not necessarily correspond to above the hall sensor. This means that the setpoint for the controller has to be calibrated for each unit.
+
+<img style="display: block; margin: auto;" src="./Media/setpoint_and_equilibrium.png" width="600px"/>
+
+In the figure above, an illustrative example of the magnetic potential from the base magnets and the proportional part of the PD controller is shown. The blue curve represents the potential from the base magnets, which has a unstable equilibrium point at $x_{base}=1$. The orange curve represents the potential from the proportional part of the controller, which is centered around the setpoint at $x_{setpoint} = 0$. The total potential is the sum of these two potentials, shown in green, which has a stable equilibrium point close to but not exactly at the setpoint. Due to the slope of the base potential at the setpoint, the equilibrium point will be offset the setpoint away from the base magnet center. By calculating this difference $x_{delta} = x_{equilibrium} - x_{setpoint}$ we can then adjust the setpoint $x_{setpoint,new} = x_{setpoint} + \alpha x_{delta}$ to move the equilibrium point closer to the setpoint. This process is repeated every control loop and will lead to the setpoint converging to the base magnet center.
+
+</details>
 
 ### Driving LEDs wirelessly
 
