@@ -151,7 +151,7 @@ Print the star. Buy magnets and screws. Assemble.
 
 #### Flashing
 An STLink, Segger Jlink or similar is required to flash the driver board. Some type of 6 pin (2x3 1.27mm pitch) pogo connector is also required (we use a TagConnect TC2030NL).
-Or you can use the through hole SWD pins. A compiled binary is provided in SW/release if you don't want to go through the hassle of compiling yourself because the makefile is a bit of mess currently. It's written for a Windows filesystem but uses unix commands (We used msys2 or cmder to compile). Next project will probably use cmake to avoid these problems.
+Or you can use the through hole SWD pins. A compiled binary is provided in SW/release if you don't want to go through the hassle of compiling yourself because the makefile is a bit of mess currently. It's written for a Windows filesystem but uses unix commands (we used msys2 or cmder to compile). Next project will probably use cmake to avoid these problems.
 
 ### How much did this all cost?
 This year's project was quite expensive. Even with a big batch of 50 units, the unit cost was around 40-50 EUR. PCBs alone cost 20 EUR per unit. Magnets and screws were not cheap either.
@@ -159,13 +159,14 @@ Expect to spend quite a bit if you are planning on reproducing it, especially a 
 
 ## Acknowledgements
 Special thanks to Jonathan Lock, this project was heavily inspired by his well-documented [maglev build](https://gitlab.com/e4870/maglev/-/tree/main).
+
 Also thanks to Seth.K and his [coil generator plugin for KiCAD](https://github.com/SK-Electronics-Consulting/kicad-coil-generators). 
 
 ## Credits
 The Janky Jingle Crew 2025 consists of:
 
-Daniel Quach: Project lead, PCB, Firmware,
-Johan Wheeler: Firmware, Control
-Gustav Abrahamsson: PCB, Mechanical
-Adam Anderson: Firmware,
+ - [Daniel Quach](https://github.com/Muoshy): Project lead, PCB, Firmware
+ - [Johan Wheeler](https://github.com/johanwheeler): Firmware, Control
+ - [Gustav Abrahamsson](https://github.com/GustavAbrahamsson): PCB, Mechanical
+ - [Adam Anderson](https://github.com/adaand00): Firmware
 
