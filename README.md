@@ -1,22 +1,15 @@
----
-lang: en-US
----
-
-
 # South Pole Levitator
 
 Janky Jingle Crew is back this Christmas as well! We are continuing with the theme of magnetic propulsion from last year, but this time for levitation! 
 
 ## Background
-Magnetic levitation kits have been around for a long time, but most of them are analog designs running on 12 V. A more recent 5 V digital version by Jonathan Lock caught our attention and served as a big source of inspiration for this project. Our take focuses on lowering the BOM cost and making assembly easier by replacing traditional coils with PCB coils.
+Magnetic levitation kits have been around for a long time, but most of them are analog designs running on 12 V. A more recent 5 V digital version by [Jonathan Lock](https://gitlab.com/e4870/maglev/-/tree/main) caught our attention and served as a big source of inspiration for this project. Our take focuses on lowering the BOM cost and making assembly easier by replacing traditional coils with PCB coils.
 
-We were aiming to build a batch of around 50 units, so coil winding quickly became a bottleneck. That led us to PCB coils as a more scalable solution. Mounting the coils was another pain point, gluing them down and then soldering wires (like many existing kits do) felt messy and inefficient. Instead, we combined mechanical mounting and electrical connection using solderable standoffs.
+We were aiming to build a batch of around 50 units, so coil winding quickly became a bottleneck. That led us to PCB coils as a more scalable solution. Mounting the coils was another pain point, gluing them down and then soldering wires (like many existing kits do) felt messy. Instead, we combined the mounting and electrical connection using solderable standoffs.
 
-We also made a (slightly unnecessary) optimization on the microcontroller side. To reduce BOM cost slightly, we chose the STM32G030, which doesn’t have an FPU, and planned to implement all control algorithms using fixed-point math. In hindsight, the time spent probably outweighed the cost savings, but at least we learned a lot about fixed-point math along the way.
+We also made a (slightly unnecessary) optimization on the microcontroller side. To reduce BOM cost slightly, we chose the STM32G030, which doesn’t have an FPU, and planned to implement all control algorithms using fixed-point math. In hindsight, the time spent probably outweighed the cost savings, but at least we learned a lot about fixed-point math (and wrote terrible code) along the way.
 
-The final result is shown below: a fully functional magnetic levitation platform made entirely from PCBs. Even the levitating tree is a PCB. Overall, the project turned out well, although there are plenty of things that could still be improved. A more in-depth technical discussion can be found here.
-
-% FINAL IRL PICTURE ?
+The final result is shown below: a fully functional magnetic levitation platform made entirely from PCBs. Even the levitating tree is a PCB. Overall, the project turned out well, although there are plenty of things that could still be improved. Feel free to open an issue or mail us if you have any technical questions.
 
 <img src="./Media/assembly_render.png" width="800px"/>
 <!-- <img src="./Media/demo.png" width="600px"/> -->
@@ -33,6 +26,8 @@ To levitate the tree:
 2. Place the driver board on a flat, nonmagnetic surface, and plug in the USB-C cable. Note that the board needs to be level when it gets power for the correct calibration. If the tree is too close, this will also affect the calibration. The calibration is complete once you hear a short beep from the coils. The status LED should also start blinking.
 3. Hold the tree a few centimeters over and lower it slowly, trying to keep it centered and pointed straight up.
 4. The rest is a balance between keeping the tree centered, and holding it with a loose enough grip. The tree needs to have the freedom to find the center itself, while also being prevented from sticking to either of the four base magnets.
+
+It is also possible to play some Christmas tunes. Simply turn the driver board upside down and place the tree on top of it. The coils should start playing a random assortment of Christmas tunes.
 
 ## Working principle
 
@@ -84,7 +79,7 @@ In the figure above, an illustrative example of the magnetic potential from the 
 
 ### Driving LEDs wirelessly
 
-The LEDs on the tree are powered by electro-magnetic noise from the switching of the coils on the driver board. There are four PCB coils in the base of the tree, each powering its quarter. The induced AC voltage in each of these coils is amplified with a resonant LC-tank tuned to the switching frequency. The resonance circuit consists of the inductance in the PCB coil and a separate MLCC C0G capacitor on the tree quarter. This amplified waveform is then rectified with a single schottky diode, finally driving the LEDs.
+The LEDs on the tree are powered by electro-magnetic noise from the switching ripple of the coils on the driver board. There are four PCB coils in the base of the tree, each powering its quarter. The induced AC voltage in each of these coils is amplified with a resonant LC-tank tuned to the switching frequency. The resonance circuit consists of the inductance in the PCB coil and a separate MLCC C0G capacitor on the tree quarter. This amplified waveform is then rectified with a single Schottky diode, finally driving the LEDs. The power transfer efficiency is absolutely garbage and therefore the LEDs will only light up when the coils are aligned. However, this also gives a passive blinking/strobing effect when it spins (without any additional components)! Definitely a planned feature and not a design flaw....
 
 <img style="display: block; margin: auto;" src="./Media/resonant_circuit.png" width="700px"/>
 
@@ -97,7 +92,7 @@ The whole levitator can be split into two main parts. The platform base and the 
 The driver board has all the components mounted. There are a total of 12 standoffs: 8x M2 standoffs for mounting the coil board and 4x M3 standoffs for mounting the base magnets. An STM32G030 reads the XYZ magnetic fields from the TMAG5273 and controls 4x DRV8837 drivers for the coils. Power is provided by USB-C connector. A TagConnect TC2030 along with pin headers break out the SWD pins for debugging.
 
 ### Coil board
-The coil board consists of four spiral coils with ~100 turns and 0.3mm trace width (25 turns per layer, 4-layer PCB). The resulting coil resistance turns out to be around 20 Ohm. Therefore, 4x coils are connected in parallel to enable higher coil current and also increase efficiency slightly. Brass washers are placed in-between each coil board to ensure electrical contact all the way down to the driver board.
+The coil board consists of four spiral coils with ~116 turns and 0.245mm trace width (25 turns per layer, 4-layer PCB, outer 1 oz, inner 1 oz). The resulting coil resistance turns out to be around 20 Ohm. Therefore, 4x coils are connected in parallel to enable higher coil current and also increase efficiency slightly. Brass washers are placed in-between each coil board to ensure electrical contact all the way down to the driver board. Initially a coil with 100 turns and 0.3mm trace width was used (outer 1 oz, inner 0.5 oz). This worked fine as well and 0.5oz is way cheaper. You can use either one, although the code might be slightly more tuned for the 116 turns variant, it should still work with the cheaper 100 turns variant.
 
 ### Tree
 The tree consists of 5 PCBs, four of which constitute the tree itself, and one being the base plate with the pickup coils. A 3D-printed star keeps all of the tree-PCBs connected at the top! Tip: blow on one side of the tree when it is levitating to make it spin!
@@ -109,14 +104,14 @@ The tree consists of 5 PCBs, four of which constitute the tree itself, and one b
 ## Manufacturing
 All the manufacturing files for the PCBs and the final software can be found in this repository. 
 
-Upload these to your favorite PCB manufacturer and order the boards. We designed the boards with JLCPCBs Parts Lib and used their PCBA. However, PCBWay and NextPCB probably have these components in stock as well or can source them for you.
+Upload these to your favorite PCB manufacturer and order the boards. We designed the boards with JLCPCBs preexisting Parts Lib and used their PCBA due to time constraints. However, PCBWay and NextPCB probably have these components in stock as well or can source them for you.
 
 You will also need the following materials per unit:
-- 1x Levitation magnet (N35-N45 20-40mm diameter, 8-15mm height) 
+- 1x Levitation magnet (N35-N45 30mm diameter, 10mm height) 
 - 4x Ring magnets with M3 countersunk hole (N35-N45, 12mm diameter, 5mm height)
 - 8x Non-magnetic M2 screws 8mm
 - 4x Non-magnetic M3 countersunk screws 8mm
-- 24x M2 Brass washers (~4-5mm OD).
+- 24x M2 Brass washers 4-5mm OD (steel probably works as well, slightly worse conductivity).
 - 8x Rubber feet (at least 0.4mm height)
 
 
@@ -148,7 +143,29 @@ The four "quarters" of the tree are soldered onto the base PCB with two solder j
 
 ## FAQ
 
+### How do I reproduce this?
+PCB assembly files can be found in /production for the driver board and tree in their respective folders under PCB/. 
+Gerber files for both coil boards are found in /gerber in their respective folders under PCB/. Remember to choose 1oz inner layers if you go for 116 turns variant.
+Upload to your PCB manufacture of choice (JLCPCB, PCBWay, NextPCB).
+Print the star. Buy magnets and screws. Assemble.
+
+#### Flashing
+An STLink, Segger Jlink or similar is required to flash the driver board. Some type of 6 pin (2x3 1.27mm pitch) pogo connector is also required (we use a TagConnect TC2030NL).
+Or you can use the through hole SWD pins. A compiled binary is provided in SW/release if you don't want to go through the hassle of compiling yourself because the makefile is a bit of mess currently. It's written for a Windows filesystem but uses unix commands (We used msys2 or cmder to compile). Next project will probably use cmake to avoid these problems.
+
+### How much did this all cost?
+This year's project was quite expensive. Even with a big batch of 50 units, the unit cost was around 40-50 EUR. PCBs alone cost 20 EUR per unit. Magnets and screws were not cheap either.
+Expect to spend quite a bit if you are planning on reproducing it, especially a small batch. 
 
 ## Acknowledgements
- 
+Special thanks to Jonathan Lock, this project was heavily inspired by his well-documented [maglev build](https://gitlab.com/e4870/maglev/-/tree/main).
+Also thanks to Seth.K and his [coil generator plugin for KiCAD](https://github.com/SK-Electronics-Consulting/kicad-coil-generators). 
+
+## Credits
+The Janky Jingle Crew 2025 consists of:
+
+Daniel Quach: Project lead, PCB, Firmware,
+Johan Wheeler: Firmware, Control
+Gustav Abrahamsson: PCB, Mechanical
+Adam Anderson: Firmware,
 
